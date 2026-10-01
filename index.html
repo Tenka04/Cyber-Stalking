@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Stalking Case Analysis — Digital Forensics Investigation Report</title>
+    <meta name="description" content="Comprehensive cyber stalking case analysis tool for identifying digital traces, evidence mapping, and forensic investigation reporting.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav">
+        <div class="nav-brand">
+            <div class="nav-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+            </div>
+            <span>CyberForensics<span class="accent">Lab</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#overview" class="nav-link active" data-section="overview">Overview</a>
+            <a href="#timeline" class="nav-link" data-section="timeline">Timeline</a>
+            <a href="#evidence" class="nav-link" data-section="evidence">Evidence</a>
+            <a href="#traces" class="nav-link" data-section="traces">Digital Traces</a>
+            <a href="#analysis" class="nav-link" data-section="analysis">Analysis</a>
+            <a href="#report" class="nav-link" data-section="report">Report</a>
+        </div>
+        <button id="report-download-btn" class="btn-primary-nav" onclick="downloadReport()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Export Report
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-badge">CASE FILE #CF-2026-0472</div>
+        <h1>Cyber Stalking Case<br><span class="gradient-text">Investigation Analysis</span></h1>
+        <p class="hero-subtitle">Comprehensive forensic examination of digital stalking activities, evidence mapping, offender profiling, and incident timeline reconstruction.</p>
+        <div class="hero-stats">
+            <div class="stat-card" id="stat-evidence">
+                <div class="stat-number" data-target="14">0</div>
+                <div class="stat-label">Evidence Items</div>
+            </div>
+            <div class="stat-card" id="stat-traces">
+                <div class="stat-number" data-target="23">0</div>
+                <div class="stat-label">Digital Traces</div>
+            </div>
+            <div class="stat-card" id="stat-incidents">
+                <div class="stat-number" data-target="9">0</div>
+                <div class="stat-label">Incidents Logged</div>
+            </div>
+            <div class="stat-card" id="stat-severity">
+                <div class="stat-number severity-high">HIGH</div>
+                <div class="stat-label">Threat Level</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section: Case Overview -->
+    <section id="overview" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                    <polyline points="10 9 9 9 8 9"/>
+                </svg>
+            </div>
+            <h2>Case Overview</h2>
+        </div>
+
+        <div class="overview-grid">
+            <div class="case-info-card glass-card">
+                <h3>Case Information</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Case Number</span>
+                        <span class="info-value">CF-2026-0472</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Date Filed</span>
+                        <span class="info-value">August 12, 2026</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Jurisdiction</span>
+                        <span class="info-value">Cyber Crime Cell, Mumbai</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Lead Investigator</span>
+                        <span class="info-value">Inspector Rajesh Mehra</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Applicable Law</span>
+                        <span class="info-value">IT Act 2000, Sec. 354D IPC</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="status-badge status-active">Active Investigation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-info-card glass-card">
+                <h3>Parties Involved</h3>
+                <div class="party-card">
+                    <div class="party-icon victim-icon">V</div>
+                    <div class="party-details">
+                        <span class="party-role">Victim / Complainant</span>
+                        <span class="party-name">Ms. Priya Sharma (Name Changed)</span>
+                        <span class="party-info">Age: 28 | Software Engineer | Mumbai, Maharashtra</span>
+                    </div>
+                </div>
+                <div class="party-card">
+                    <div class="party-icon suspect-icon">S</div>
+                    <div class="party-details">
+                        <span class="party-role">Primary Suspect</span>
+                        <span class="party-name">Mr. Arjun Kapoor (Name Changed)</span>
+                        <span class="party-info">Age: 31 | Former Colleague | Known to Victim</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="case-info-card glass-card full-width">
+                <h3>Case Summary</h3>
+                <p class="case-summary-text">
+                    The complainant, Ms. Priya Sharma, reported persistent cyber stalking activities spanning approximately <strong>4 months</strong> (April–August 2026). The offender allegedly created multiple fake social media accounts to monitor the victim's online activities, sent threatening and harassing messages via email and messaging platforms, tracked the victim's real-time location using spyware installed on her mobile device, shared manipulated images of the victim on anonymous forums, and attempted unauthorized access to the victim's personal accounts. The digital forensic investigation has uncovered substantial evidence linking the suspect to the stalking activities through IP address correlation, device fingerprinting, metadata analysis, and behavioral pattern matching.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Timeline -->
+    <section id="timeline" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                </svg>
+            </div>
+            <h2>Incident Timeline</h2>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-marker severity-low-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">April 5, 2026</div>
+                    <div class="timeline-severity severity-tag-low">Low Severity</div>
+                    <h4>Initial Contact — Fake Profile Creation</h4>
+                    <p>A new Instagram account "@travel_wanderer_22" was created and began following the victim. The account liked and commented on multiple photos over 3 days. The profile used a stock image as the display picture.</p>
+                    <div class="evidence-tag">EV-001: Screenshot of profile activity</div>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-marker severity-low-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">April 18, 2026</div>
+                    <div class="timeline-severity severity-tag-low">Low Severity</div>
+                    <h4>Second Fake Account — Direct Messages</h4>
+                    <p>A second account "@_anonymous_friend_" was created on Facebook and began sending unsolicited personal messages referencing the victim's daily schedule, workplace, and recent activities — indicating real-world surveillance.</p>
+                    <div class="evidence-tag">EV-002: Message screenshots with timestamps</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-marker severity-medium-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">May 2, 2026</div>
+                    <div class="timeline-severity severity-tag-medium">Medium Severity</div>
+                    <h4>Email Harassment Begins</h4>
+                    <p>The victim began receiving anonymous emails from "no.one.knows.you@protonmail.com" containing threatening language, personal photographs taken without consent, and demands for a meeting. Headers traced to VPN exit node in Singapore.</p>
+                    <div class="evidence-tag">EV-003: Email headers & content archive</div>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-marker severity-medium-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">May 20, 2026</div>
+                    <div class="timeline-severity severity-tag-medium">Medium Severity</div>
+                    <h4>Unauthorized Account Access Attempts</h4>
+                    <p>Multiple failed login attempts detected on the victim's Gmail and LinkedIn accounts from IP 103.87.xx.xx (ISP: Reliance Jio, Mumbai). Two-factor authentication blocked the access. Google security alerts archived.</p>
+                    <div class="evidence-tag">EV-004: Google security alert logs</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-marker severity-high-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">June 8, 2026</div>
+                    <div class="timeline-severity severity-tag-high">High Severity</div>
+                    <h4>Spyware Installation Detected</h4>
+                    <p>A mobile forensic scan revealed the installation of a commercial spyware application "TrackMate Pro" on the victim's Android device. The app was logging GPS coordinates, call records, SMS messages, and keystrokes. Data was being exfiltrated to server IP 185.243.xx.xx.</p>
+                    <div class="evidence-tag">EV-005: Mobile forensic report & spyware binary</div>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-marker severity-high-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">June 25, 2026</div>
+                    <div class="timeline-severity severity-tag-high">High Severity</div>
+                    <h4>Morphed Images Distributed Online</h4>
+                    <p>Digitally altered/morphed images of the victim were posted on an anonymous image-sharing forum. Reverse image search confirmed the original photos were sourced from the victim's private social media. EXIF metadata of edits traced to Adobe Photoshop with specific license key.</p>
+                    <div class="evidence-tag">EV-006: Forum post archives & EXIF data</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-marker severity-high-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">July 10, 2026</div>
+                    <div class="timeline-severity severity-tag-high">High Severity</div>
+                    <h4>Real-Time Location Tracking & Physical Following</h4>
+                    <p>The victim reported being physically followed on two occasions. Analysis of the spyware data logs confirmed real-time GPS coordinates were accessed by the suspect's registered device minutes before each physical encounter.</p>
+                    <div class="evidence-tag">EV-007: GPS logs correlation report</div>
+                </div>
+            </div>
+
+            <div class="timeline-item right" data-aos="fade-left">
+                <div class="timeline-marker severity-critical-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">July 28, 2026</div>
+                    <div class="timeline-severity severity-tag-critical">Critical</div>
+                    <h4>Death Threats via WhatsApp</h4>
+                    <p>The victim received explicit death threats via WhatsApp from an unregistered number (+91-98XXX-XXXXX). Messages included references to the victim's home address and daily routine, demonstrating persistent surveillance. WhatsApp business API logs subpoenaed.</p>
+                    <div class="evidence-tag">EV-008: WhatsApp chat forensic export</div>
+                </div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-marker severity-critical-marker"></div>
+                <div class="timeline-content glass-card">
+                    <div class="timeline-date">August 12, 2026</div>
+                    <div class="timeline-severity severity-tag-critical">Critical</div>
+                    <h4>FIR Filed — Formal Investigation Initiated</h4>
+                    <p>FIR No. 472/2026 registered at Cyber Crime Cell, Mumbai. Case registered under Section 354D IPC (Stalking), Section 66E IT Act (Privacy Violation), Section 67 IT Act (Publishing obscene material), and Section 506 IPC (Criminal Intimidation).</p>
+                    <div class="evidence-tag">EV-009: FIR document & complaint copy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Digital Evidence -->
+    <section id="evidence" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+            </div>
+            <h2>Digital Evidence Inventory</h2>
+        </div>
+
+        <div class="evidence-filters">
+            <button class="filter-btn active" data-filter="all" id="filter-all">All Evidence</button>
+            <button class="filter-btn" data-filter="communication" id="filter-comm">Communication</button>
+            <button class="filter-btn" data-filter="device" id="filter-device">Device</button>
+            <button class="filter-btn" data-filter="network" id="filter-network">Network</button>
+            <button class="filter-btn" data-filter="media" id="filter-media">Media</button>
+        </div>
+
+        <div class="evidence-grid" id="evidence-grid">
+            <!-- Evidence cards generated by JS -->
+        </div>
+    </section>
+
+    <!-- Section: Digital Traces -->
+    <section id="traces" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+            </div>
+            <h2>Digital Traces Identified</h2>
+        </div>
+
+        <p class="section-desc">The following digital traces were identified during the forensic investigation, linking the suspect to the stalking activities.</p>
+
+        <div class="traces-grid">
+            <!-- IP & Network Traces -->
+            <div class="trace-category glass-card">
+                <div class="trace-cat-header">
+                    <div class="trace-cat-icon" style="--cat-color: #6366f1;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                            <line x1="6" y1="6" x2="6.01" y2="6"/>
+                            <line x1="6" y1="18" x2="6.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>IP & Network Traces</h3>
+                </div>
+                <ul class="trace-list">
+                    <li>
+                        <span class="trace-id">DT-001</span>
+                        <strong>Source IP Address:</strong> 103.87.xx.xx identified across multiple harassment emails and login attempts. ISP records (Reliance Jio) linked to physical address in Andheri West, Mumbai — matching suspect's registered residence.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-002</span>
+                        <strong>VPN Exit Node Correlation:</strong> ProtonVPN exit node (Singapore) used for anonymous emails. Payment records for ProtonVPN subscription traced to suspect's PayPal account (ar***@gmail.com).
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-003</span>
+                        <strong>Spyware C2 Server:</strong> Command & Control server IP 185.243.xx.xx hosting TrackMate Pro dashboard. Server registration via Namecheap using suspect's alternate email recovered from DNS WHOIS records.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-004</span>
+                        <strong>Wi-Fi MAC Address:</strong> Device MAC address AA:BB:CC:xx:xx:xx logged at victim's workplace guest Wi-Fi network on multiple dates coinciding with physical surveillance events.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Device & Browser Fingerprints -->
+            <div class="trace-category glass-card">
+                <div class="trace-cat-header">
+                    <div class="trace-cat-icon" style="--cat-color: #f59e0b;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                        </svg>
+                    </div>
+                    <h3>Device & Browser Fingerprints</h3>
+                </div>
+                <ul class="trace-list">
+                    <li>
+                        <span class="trace-id">DT-005</span>
+                        <strong>Browser Fingerprint:</strong> Unique Canvas fingerprint hash (0x3A7F...B2C1) matched across fake Instagram account, Facebook account, and anonymous forum posts — confirming single-device origin.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-006</span>
+                        <strong>User-Agent String:</strong> Consistent UA string "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0" with unique plugin configuration matched suspect's seized laptop.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-007</span>
+                        <strong>Device IMEI:</strong> IMEI 35-XXXXXX-XXXXXX-X from WhatsApp threat messages matched suspect's registered mobile device (Samsung Galaxy S24).
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-008</span>
+                        <strong>Photoshop License Key:</strong> EXIF metadata of morphed images contained Adobe Photoshop CC serial number traced to suspect's Adobe Creative Cloud subscription.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Account & Identity Traces -->
+            <div class="trace-category glass-card">
+                <div class="trace-cat-header">
+                    <div class="trace-cat-icon" style="--cat-color: #ec4899;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Account & Identity Traces</h3>
+                </div>
+                <ul class="trace-list">
+                    <li>
+                        <span class="trace-id">DT-009</span>
+                        <strong>Email Recovery Address:</strong> Protonmail account "no.one.knows.you@protonmail.com" had a recovery phone number ending in XXXX47 — matching suspect's secondary SIM card.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-010</span>
+                        <strong>Fake Account Registration:</strong> Instagram account "@travel_wanderer_22" was registered using phone number linked to prepaid SIM purchased from retailer in Andheri — CCTV footage shows suspect at store.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-011</span>
+                        <strong>Password Reuse Pattern:</strong> Credential analysis revealed password pattern "Ar***K@p***2026" used across multiple fake accounts — consistent with suspect's known password patterns from employer breach data.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-012</span>
+                        <strong>Payment Trail:</strong> Spyware license purchased via cryptocurrency (BTC) traced through blockchain analysis to Coinbase account registered with suspect's PAN card details.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Behavioral & Metadata Traces -->
+            <div class="trace-category glass-card">
+                <div class="trace-cat-header">
+                    <div class="trace-cat-icon" style="--cat-color: #10b981;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Behavioral & Metadata Traces</h3>
+                </div>
+                <ul class="trace-list">
+                    <li>
+                        <span class="trace-id">DT-013</span>
+                        <strong>Activity Timing Pattern:</strong> Harassment messages consistently sent between 11:00 PM–2:00 AM IST. This pattern matches suspect's known nighttime internet usage from ISP data logs.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-014</span>
+                        <strong>Writing Style Analysis (Stylometry):</strong> Linguistic analysis of threatening messages showed 94.2% similarity with suspect's known writing samples (LinkedIn posts, emails to colleagues) using Writeprints analysis.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-015</span>
+                        <strong>Photo EXIF Geolocation:</strong> Surveillance photographs found on suspect's cloud backup contained GPS coordinates matching locations the victim visited — confirming physical stalking.
+                    </li>
+                    <li>
+                        <span class="trace-id">DT-016</span>
+                        <strong>Search History (Seized Device):</strong> Browser history from seized laptop included searches for "how to track someone's phone without them knowing", "anonymous email services", and "stalk Instagram without detection".</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Network Map Visualization -->
+        <div class="network-map glass-card">
+            <h3>Evidence Connection Map</h3>
+            <div class="network-viz" id="network-viz">
+                <canvas id="network-canvas"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Analysis -->
+    <section id="analysis" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"/>
+                    <line x1="12" y1="20" x2="12" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+            </div>
+            <h2>Forensic Analysis</h2>
+        </div>
+
+        <div class="analysis-grid">
+            <!-- Threat Assessment -->
+            <div class="analysis-card glass-card">
+                <h3>Threat Assessment Matrix</h3>
+                <div class="threat-matrix">
+                    <div class="threat-item">
+                        <div class="threat-label">Physical Harm Risk</div>
+                        <div class="threat-bar">
+                            <div class="threat-fill critical" style="--target-width: 85%;" data-width="85"></div>
+                        </div>
+                        <span class="threat-value">85%</span>
+                    </div>
+                    <div class="threat-item">
+                        <div class="threat-label">Digital Intrusion Level</div>
+                        <div class="threat-bar">
+                            <div class="threat-fill high" style="--target-width: 92%;" data-width="92"></div>
+                        </div>
+                        <span class="threat-value">92%</span>
+                    </div>
+                    <div class="threat-item">
+                        <div class="threat-label">Escalation Probability</div>
+                        <div class="threat-bar">
+                            <div class="threat-fill high" style="--target-width: 78%;" data-width="78"></div>
+                        </div>
+                        <span class="threat-value">78%</span>
+                    </div>
+                    <div class="threat-item">
+                        <div class="threat-label">Evidence Strength</div>
+                        <div class="threat-bar">
+                            <div class="threat-fill strong" style="--target-width: 95%;" data-width="95"></div>
+                        </div>
+                        <span class="threat-value">95%</span>
+                    </div>
+                    <div class="threat-item">
+                        <div class="threat-label">Suspect Identification Confidence</div>
+                        <div class="threat-bar">
+                            <div class="threat-fill strong" style="--target-width: 91%;" data-width="91"></div>
+                        </div>
+                        <span class="threat-value">91%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offender Profile -->
+            <div class="analysis-card glass-card">
+                <h3>Offender Profile Analysis</h3>
+                <div class="profile-section">
+                    <h4>Behavioral Characteristics</h4>
+                    <ul class="profile-list">
+                        <li><span class="profile-bullet"></span>Displays <strong>obsessive attachment behavior</strong> consistent with rejected-type stalker profile</li>
+                        <li><span class="profile-bullet"></span>Progressive escalation from digital monitoring → direct threats → physical following</li>
+                        <li><span class="profile-bullet"></span>Demonstrates above-average technical sophistication (spyware deployment, VPN usage, cryptocurrency payments)</li>
+                        <li><span class="profile-bullet"></span>Pattern consistent with "intimate partner" stalking sub-type — prior known relationship with victim</li>
+                    </ul>
+                </div>
+                <div class="profile-section">
+                    <h4>Modus Operandi</h4>
+                    <ul class="profile-list">
+                        <li><span class="profile-bullet"></span>Creates multiple fake identities to monitor victim across platforms</li>
+                        <li><span class="profile-bullet"></span>Uses privacy tools (VPN, Protonmail, cryptocurrency) to obfuscate identity</li>
+                        <li><span class="profile-bullet"></span>Deploys commercial spyware for real-time surveillance</li>
+                        <li><span class="profile-bullet"></span>Escalates to intimidation when victim doesn't respond</li>
+                        <li><span class="profile-bullet"></span>Alternates between anonymous threats and apparent concern from fake "friendly" accounts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal Analysis -->
+            <div class="analysis-card glass-card full-width">
+                <h3>Legal Framework & Applicable Sections</h3>
+                <div class="legal-grid">
+                    <div class="legal-item">
+                        <div class="legal-section">Section 354D IPC</div>
+                        <div class="legal-title">Stalking</div>
+                        <p>Following, contacting, or monitoring a woman through electronic communication despite clear disinterest. Punishment: Up to 3 years imprisonment on first conviction.</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Directly Applicable — All 9 documented incidents qualify
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-section">Section 66E, IT Act</div>
+                        <div class="legal-title">Violation of Privacy</div>
+                        <p>Intentionally capturing, publishing, or transmitting images of a private area without consent. Punishment: Up to 3 years imprisonment + fine up to ₹2,00,000.</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Applicable — Morphed images & surveillance photographs
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-section">Section 67, IT Act</div>
+                        <div class="legal-title">Publishing Obscene Material</div>
+                        <p>Publishing or transmitting obscene material in electronic form. Punishment: Up to 5 years imprisonment + fine up to ₹10,00,000.</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Applicable — Morphed images posted on public forum
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-section">Section 506 IPC</div>
+                        <div class="legal-title">Criminal Intimidation</div>
+                        <p>Threatening another person with injury to person, reputation, or property. Punishment: Up to 2 years imprisonment (up to 7 years for death threat).</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Applicable — Death threats via WhatsApp
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-section">Section 43, IT Act</div>
+                        <div class="legal-title">Unauthorized Access</div>
+                        <p>Unauthorized access to computer resources, introduction of malware/spyware. Compensation up to ₹5,00,00,000.</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Applicable — Spyware installation on victim's device
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-section">Section 66, IT Act</div>
+                        <div class="legal-title">Computer Related Offences</div>
+                        <p>Hacking with intent to cause damage or unauthorized access. Punishment: Up to 3 years imprisonment + fine up to ₹5,00,000.</p>
+                        <div class="legal-applicability">
+                            <span class="legal-check">✓</span> Applicable — Unauthorized login attempts on victim's accounts
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Investigation Report -->
+    <section id="report" class="section">
+        <div class="section-header">
+            <div class="section-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+            </div>
+            <h2>Investigation Report</h2>
+        </div>
+
+        <div class="report-container glass-card">
+            <div class="report-header-block">
+                <div class="report-badge">CONFIDENTIAL</div>
+                <h3>Digital Forensics Investigation Report</h3>
+                <p class="report-meta">Case No: CF-2026-0472 | Date: September 15, 2026 | Classification: Restricted</p>
+            </div>
+
+            <div class="report-body">
+                <div class="report-section">
+                    <h4>1. Executive Summary</h4>
+                    <p>This report presents the findings of a comprehensive digital forensic investigation into cyber stalking activities reported by the complainant (Ms. Priya Sharma) against the primary suspect (Mr. Arjun Kapoor). The investigation was conducted by the Cyber Crime Cell, Mumbai, under FIR No. 472/2026. Over the course of the investigation, <strong>14 items of digital evidence</strong> were collected, <strong>23 distinct digital traces</strong> were identified, and <strong>9 incidents</strong> were documented spanning April–August 2026. The evidence strongly supports the complainant's allegations and provides a high-confidence identification of the suspect.</p>
+                </div>
+
+                <div class="report-section">
+                    <h4>2. Scope of Investigation</h4>
+                    <ul>
+                        <li>Forensic analysis of victim's mobile device (Android — Samsung Galaxy A54)</li>
+                        <li>Forensic imaging and analysis of suspect's seized laptop (Dell Inspiron 15)</li>
+                        <li>Analysis of suspect's seized mobile device (Samsung Galaxy S24)</li>
+                        <li>Email header analysis and IP tracing</li>
+                        <li>Social media account investigation (Instagram, Facebook, anonymous forums)</li>
+                        <li>Network traffic analysis and VPN correlation</li>
+                        <li>Spyware binary reverse engineering and C2 server analysis</li>
+                        <li>Cryptocurrency transaction tracing (Bitcoin blockchain analysis)</li>
+                        <li>Stylometric analysis of written communications</li>
+                        <li>ISP records subpoena and CDR (Call Detail Records) analysis</li>
+                    </ul>
+                </div>
+
+                <div class="report-section">
+                    <h4>3. Tools & Methodologies Used</h4>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <strong>Cellebrite UFED</strong>
+                            <span>Mobile device forensic extraction</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>EnCase Forensic</strong>
+                            <span>Disk imaging & computer forensics</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Wireshark</strong>
+                            <span>Network traffic capture & analysis</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Autopsy 4.x</strong>
+                            <span>Open-source digital forensics platform</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Maltego</strong>
+                            <span>OSINT & link analysis</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Chainalysis Reactor</strong>
+                            <span>Cryptocurrency tracing</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>FTK Imager</strong>
+                            <span>Forensic disk imaging</span>
+                        </div>
+                        <div class="tool-item">
+                            <strong>Writeprints</strong>
+                            <span>Stylometric authorship analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h4>4. Key Findings</h4>
+                    <div class="finding-block">
+                        <div class="finding-number">4.1</div>
+                        <div class="finding-content">
+                            <h5>Multi-Platform Harassment Campaign</h5>
+                            <p>The suspect orchestrated a coordinated harassment campaign across Instagram, Facebook, email (Protonmail), WhatsApp, and anonymous image forums using a combination of fake identities, VPN services, and prepaid SIM cards. Despite attempts at anonymization, operational security failures (OPSEC) resulted in multiple identifiable digital traces.</p>
+                        </div>
+                    </div>
+                    <div class="finding-block">
+                        <div class="finding-number">4.2</div>
+                        <div class="finding-content">
+                            <h5>Spyware-Enabled Real-Time Surveillance</h5>
+                            <p>The commercial spyware "TrackMate Pro" was installed on the victim's device, likely through physical access during a social interaction (analysis shows installation occurred on May 28, 2026 at 14:23 IST). The spyware enabled GPS tracking, call/SMS interception, keylogging, and ambient audio recording. Data exfiltration was confirmed to a C2 server registered using the suspect's alternative identity.</p>
+                        </div>
+                    </div>
+                    <div class="finding-block">
+                        <div class="finding-number">4.3</div>
+                        <div class="finding-content">
+                            <h5>Progressive Escalation Pattern</h5>
+                            <p>The stalking behavior followed a documented escalation trajectory: online monitoring → direct messaging → email threats → spyware installation → image manipulation → physical following → death threats. This escalation pattern is consistent with academic research on stalking behavior and represents a significant risk indicator for potential physical violence.</p>
+                        </div>
+                    </div>
+                    <div class="finding-block">
+                        <div class="finding-number">4.4</div>
+                        <div class="finding-content">
+                            <h5>High-Confidence Suspect Identification</h5>
+                            <p>Through convergent analysis of IP addresses, device fingerprints, payment records, stylometric analysis, CCTV correlation, and ISP records, the investigation has identified the suspect with <strong>91% confidence</strong>. The multi-source corroboration significantly reduces the possibility of misidentification.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h4>5. Chain of Custody</h4>
+                    <p>All digital evidence was collected, preserved, and analyzed following standard forensic protocols. Chain of custody documentation is maintained for all 14 evidence items. Forensic images were created using write-blockers and verified with SHA-256 hash values. All evidence handling complies with the requirements of the Indian Evidence Act (Section 65B) for electronic evidence admissibility.</p>
+                    <div class="custody-note">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                        All forensic images are stored in tamper-proof encrypted containers with dual-auditor access controls.
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h4>6. Conclusions & Recommendations</h4>
+                    <div class="conclusion-grid">
+                        <div class="conclusion-item">
+                            <div class="conclusion-icon conclusion-finding">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <h5>Primary Conclusion</h5>
+                            <p>Digital evidence conclusively establishes a sustained cyber stalking campaign by the suspect against the victim over a period of approximately 4 months. The evidence meets the evidentiary threshold for prosecution under all cited sections of the IPC and IT Act.</p>
+                        </div>
+                        <div class="conclusion-item">
+                            <div class="conclusion-icon conclusion-action">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="12" y1="8" x2="12" y2="12"/>
+                                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                                </svg>
+                            </div>
+                            <h5>Recommended Actions</h5>
+                            <ul>
+                                <li>Immediate arrest of suspect under non-bailable provisions</li>
+                                <li>Protective order for the victim under Section 18 of PWDV Act</li>
+                                <li>Seizure and forensic examination of suspect's remaining digital devices</li>
+                                <li>Takedown requests to social media platforms for fake accounts</li>
+                                <li>Referral to Victim Support Services for psychological assistance</li>
+                                <li>Charge sheet filing with all 14 evidence items annexed as per Section 65B compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section report-signature">
+                    <div class="signature-block">
+                        <div class="signature-line"></div>
+                        <p><strong>Inspector Rajesh Mehra</strong></p>
+                        <p>Lead Investigating Officer</p>
+                        <p>Cyber Crime Cell, Mumbai Police</p>
+                        <p>Date: September 15, 2026</p>
+                    </div>
+                    <div class="signature-block">
+                        <div class="signature-line"></div>
+                        <p><strong>Dr. Ananya Desai</strong></p>
+                        <p>Digital Forensics Expert</p>
+                        <p>Certified Computer Examiner (CCE)</p>
+                        <p>Date: September 15, 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <span>CyberForensics<span class="accent">Lab</span></span>
+            </div>
+            <p class="footer-disclaimer">This is a simulated case study for educational purposes. All names, events, and evidence items are fictional. Created as part of a Cyber Crime and Digital Forensics academic project.</p>
+            <p class="footer-copy">&copy; 2026 CyberForensicsLab — Academic Case Study Project</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
